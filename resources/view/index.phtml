@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<title>Intacct Office matrix</title>
+<body>
+
+<form action="<?php echo MyURL::generate("setDetails") ?>" method="post">
+    <label>Label Name :</label>
+    <input name="label"/><br/><br/>
+    <label>Destination :</label>
+    <input name="destination"/><br/><br/>
+    <label>Origins (one in each line)</label><br/>
+    <textarea name="origins" rows="25"></textarea><br/><br/>
+    <input type="submit" />
+</form>
+</body>
+</html>

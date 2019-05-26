@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<title>Intacct Office matrix</title>
+<body>
+
+<ol style="padding: 25px;">
+    <?php
+    foreach ($csvNames as $csvName) {
+        echo "<li class='eachCSVfile' onclick='requestCSVDownload(\"$csvName\")'>{$csvName}</li>";
+    }
+    ?>
+</ol>
+
+
+<form id="myform" action="<?php echo MyURL::generate("downloadCSVFile") ?>" method="post">
+    <input type="hidden" name="csvFile" id="csvFile" value=""/>
+    <input type="hidden" name="code" id="code" value=""/>
+</form>
+
+<script>
+    function requestCSVDownload(csvName) {
+        var code = prompt("Enter Code for " + csvName);
+        document.getElementById("csvFile").value = csvName;
+        document.getElementById("code").value = code;
+        document.getElementById("myform").submit();
+    }
+</script>
+<style>
+    .eachCSVfile {
+        padding: 10px;
+    }
+</style>
+</body>
+</html>

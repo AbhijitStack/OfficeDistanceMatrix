@@ -1,0 +1,20 @@
+{
+  "name": "abhijit/intacctoffice",
+  "description": "google matric api",
+  "license": "GPL3",
+  "authors": [
+    {
+      "name": "Abhijit Kumar",
+      "email": "abhijit1v1work@gmail.com"
+    }
+  ],
+  "require": {
+    "teampickr/php-google-maps-distance-matrix": "^0.4.0",
+    "guzzlehttp/guzzle": "^6.3"
+  },
+  "autoload": {
+    "psr-4": {
+     "TeamPickr\\DistanceMatrix\\Response\\": "rewritevendor\\teampickr"
+    }
+  }
+}

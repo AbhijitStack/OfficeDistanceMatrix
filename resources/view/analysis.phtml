@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<title>Intacct Office matrix</title>
+<body>
+<hr/>
+<?php
+foreach ($data as $key => $element) {
+    echo "Label : ".$key . "<br><br/>";
+    echo "Average distance : {$element['averageDistanceValue']}<br/>";
+    echo "Average duration : {$element['averageDurationValue']}<br/>";
+    echo "Average duration (in Traffic): {$element['averageTrafficDurationValue']}<br/>";
+    echo "<hr/>";
+}
+?>
+<hr/>
+
+</body>
+</html>
