@@ -29,7 +29,7 @@ class OfficeDistanceMatrixCtrl
     public function runMatrix()
     {
         $maxApiCall = 10;
-        foreach (glob("storage/request/*.json", GLOB_BRACE) as $jsonFile) {
+        foreach (glob("../storage/request/*.json", GLOB_BRACE) as $jsonFile) {
             $fileContent = file_get_contents($jsonFile);
             $content = json_decode($fileContent);
             $dmdObj = new OfficeDistanceMatrix();
@@ -39,7 +39,7 @@ class OfficeDistanceMatrixCtrl
             $responseArr = $dmdObj->getResponseArr();
             $dateStr = date("D-d-M@h_i_s_a");
             $label = $content->label . "#~#" . $dateStr . ".csv";
-            $file = fopen("storage/response/{$label}", "w");
+            $file = fopen("../storage/response/{$label}", "w");
             $test = 0;
             foreach ($responseArr as $line) {
                 fputcsv($file, $line);
