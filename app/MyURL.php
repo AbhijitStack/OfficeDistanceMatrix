@@ -8,7 +8,7 @@ class MyURL
     public static $key;
 
     /* @var string $baseURL */
-    public static $baseURL = "/";
+    public static $baseURL = "http://localhost/OfficeDistanceMatrix/public/";
 
     /**
      * @param string $url

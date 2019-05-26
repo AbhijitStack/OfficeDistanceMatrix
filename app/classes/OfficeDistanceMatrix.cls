@@ -67,7 +67,7 @@ class OfficeDistanceMatrix
     public function doRequest($origins, $destination)
     {
         try {
-            $this->requestObj->avoidHighways();
+           // $this->requestObj->avoidHighways();
             $this->requestObj->avoidTolls();
             $this->requestObj->setDepartureTime(time());
             $this->requestObj->setTrafficModel("pessimistic");
