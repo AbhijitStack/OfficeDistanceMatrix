@@ -8,7 +8,7 @@ class MyURL
     public static $key;
 
     /* @var string $baseURL */
-    public static $baseURL = "http://localhost/IntacctOffice/public";
+    public static $baseURL = "/";
 
     /**
      * @param string $url
