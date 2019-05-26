@@ -1,5 +1,8 @@
 <?php
 
+
+session_start();
+
 use TeamPickr\DistanceMatrix\Response\Row;
 spl_autoload_register("loadClasses");
 
@@ -40,7 +43,13 @@ class SimpleAppUI
     {
         switch (MyURL::$key) {
             case 'takeInput':
-                view("index");
+                if( isset( $_SESSION['responseKey'] )) {
+                    $responseKey =  $_SESSION['responseKey'];
+                    unset($_SESSION['responseKey']);
+                }else {
+                    $responseKey = 0;
+                }
+                view("index", ['responseKey' => $responseKey]);
                 break;
             case 'setDetails':
                 (new OfficeDistanceMatrixCtrl())->setDetails();

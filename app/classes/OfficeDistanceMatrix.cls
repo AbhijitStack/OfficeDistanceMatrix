@@ -70,11 +70,10 @@ class OfficeDistanceMatrix
             $this->requestObj->avoidHighways();
             $this->requestObj->avoidTolls();
             $this->requestObj->setDepartureTime(time());
-            $this->requestObj->setTrafficModel("");
+            $this->requestObj->setTrafficModel("pessimistic");
             $this->requestObj->setUnits("metric");
             foreach ($origins as $origin) {
                 $this->requestObj->addOrigin($origin);
-                break;
             }
             $this->requestObj->addDestination($destination);
             $this->responseObj = $this->requestObj->request();

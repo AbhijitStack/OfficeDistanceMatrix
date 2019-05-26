@@ -3,6 +3,19 @@
 <title>Intacct Office matrix</title>
 <body>
 
+<script>
+    <?php
+    switch ($responseKey) {
+        case 1:
+            echo "alert('Record added!');";
+            break;
+        case -1:
+            echo "alert('Only aplha allowed in Labels');";
+            break;
+    }
+    ?>
+</script>
+
 <form action="<?php echo MyURL::generate("setDetails") ?>" method="post">
     <label>Label Name :</label>
     <input name="label"/><br/><br/>

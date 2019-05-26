@@ -15,15 +15,19 @@ class OfficeDistanceMatrixCtrl
         $destination = trim($_POST['destination']);
         $label = $_POST['label'];
         if (!ctype_alpha($label)) {
-            echo "Only aplha. allowed!!!";
-            exit(0);
+            $_SESSION['responseKey'] = -1;
+        } else {
+            $content = [
+                "label" => $label,
+                "destination" => $destination,
+                "origins" => $origins
+            ];
+            file_put_contents("../storage/request/{$label}.json", json_encode($content));
+            sleep(1);
+            $_SESSION['responseKey'] = 1;
         }
-        $content = [
-            "label" => $label,
-            "destination" => $destination,
-            "origins" => $origins
-        ];
-        file_put_contents("../storage/request/{$label}.json", json_encode($content));
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        exit(0);
     }
 
     public function runMatrix()
