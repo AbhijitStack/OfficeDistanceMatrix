@@ -8,7 +8,7 @@ spl_autoload_register("loadClasses");
  */
 function loadClasses($className)
 {
-    require_once __DIR__ . "\classes\\{$className}.cls";
+    require_once __DIR__ . "/classes/{$className}.cls";
 }
 
 /**
