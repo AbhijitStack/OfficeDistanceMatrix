@@ -6,9 +6,9 @@
 <?php
 foreach ($data as $key => $element) {
     echo "Label : ".$key . "<br><br/>";
-    echo "Average distance : {$element['averageDistanceValue']}<br/>";
-    echo "Average duration : {$element['averageDurationValue']}<br/>";
-    echo "Average duration (in Traffic): {$element['averageTrafficDurationValue']}<br/>";
+    echo "Average distance : {$element['display_averageDistanceValue']}<br/>";
+    echo "Average duration : {$element['display_averageDurationValue']}<br/>";
+    echo "Average duration (of executed time): {$element['display_averageTrafficDurationValue']}<br/>";
     echo "<hr/>";
 }
 ?>
