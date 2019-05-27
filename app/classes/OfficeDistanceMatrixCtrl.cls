@@ -89,13 +89,33 @@ class OfficeDistanceMatrixCtrl
                 $totalCount++;
             }
             fclose($file);
-            $viewVar[$label]['averageDistanceValue'] = ceil(($allDistanceValue / $totalCount) / 1000) . " km";
-            $minutes = ($allDurationValue / $totalCount);
-            $viewVar[$label]['averageDurationValue'] = floor($minutes / 60) . ':' . (ceil($minutes - floor($minutes / 60) * 60)) . " min";
-            $minutes = ($allTrafficDurationValue / $totalCount);
-            $viewVar[$label]['averageTrafficDurationValue'] = floor($minutes / 60) . ':' . (ceil($minutes - floor($minutes / 60) * 60)) . " min";
+
+            $viewVar[$label]['averageDistanceValue'] = isset($viewVar[$label]['averageDistanceValue']) ?
+                ($viewVar[$label]['averageDistanceValue'] + $allDistanceValue) : (0 + $allDistanceValue);
+
+            $viewVar[$label]['averageDurationValue'] = isset($viewVar[$label]['averageDurationValue']) ?
+                ($viewVar[$label]['averageDurationValue'] + $allDurationValue) : (0 + $allDurationValue);
+
+            $viewVar[$label]['averageTrafficDurationValue'] = isset($viewVar[$label]['averageTrafficDurationValue']) ?
+                ($viewVar[$label]['averageTrafficDurationValue'] + $allTrafficDurationValue) : (0 + $allTrafficDurationValue);
+
+            $viewVar[$label]['totalCount'] = isset($viewVar[$label]['totalCount']) ?
+                ($viewVar[$label]['totalCount'] + $totalCount) : (0 + $totalCount);
+
+
+            $viewVar[$label]['display_averageDistanceValue'] =
+                ceil(($viewVar[$label]['averageDistanceValue'] / $viewVar[$label]['totalCount']) / 1000) . " km";
+
+            $minutes = ($viewVar[$label]['averageDurationValue'] / $viewVar[$label]['totalCount']);
+            $viewVar[$label]['display_averageDurationValue'] =
+                floor($minutes / 60) . ':' . (ceil($minutes - floor($minutes / 60) * 60)) . " min";
+
+            $minutes = ($viewVar[$label]['averageTrafficDurationValue'] / $viewVar[$label]['totalCount']);
+            $viewVar[$label]['display_averageTrafficDurationValue'] =
+                floor($minutes / 60) . ':' . (ceil($minutes - floor($minutes / 60) * 60)) . " min";
 
         }
+
         view("analysis", ["data" => $viewVar]);
     }
 
